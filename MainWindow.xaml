@@ -1,0 +1,96 @@
+﻿<Window x:Class="AudioRecordingApp.MainWindow"
+        Style="{StaticResource MaterialDesignWindow}"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AudioRecordingApp"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="AudioUploader"
+        Height="450"
+        Width="800"
+        Icon="C:\Users\Ethan\Desktop\UploadAudioIcon.ico"
+        Background="{DynamicResource BackgroundBrush}"
+        Foreground="{DynamicResource ForegroundBrush}">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="537">
+
+            <!-- Title TextBlock -->
+            <TextBlock Text="Audio Uploader" 
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Style="{StaticResource MaterialDesignDisplayMediumTextBlock}" 
+                       Foreground="{DynamicResource ForegroundBrush}" 
+                       Margin="0,0,0,10"/>
+
+            <!-- Select File Button with MaterialDesign shadow elevation -->
+            <Button x:Name="SelectFileButton" Content="Select Audio File" Click="SelectFileButton_Click" Width="200" Height="35" HorizontalAlignment="Left"
+                    Style="{StaticResource MaterialDesignRaisedButton}"  />
+
+            <!-- Upload Button with MaterialDesign shadow elevation -->
+            <Button x:Name="UploadButton" Content="Upload to S3" Click="UploadButton_Click" Width="200" Height="35" Margin="0,10,0,10" HorizontalAlignment="Left" 
+                    Style="{StaticResource MaterialDesignRaisedButton}"  />
+            
+            <TextBlock Text="Selected File:" 
+HorizontalAlignment="Left"
+VerticalAlignment="Center"
+Style="{StaticResource MaterialDesignTitleLargeTextBlock}" 
+Foreground="{DynamicResource ForegroundBrush}" 
+Margin="0,0,0,00"/>
+
+            <!-- Result TextBox -->
+            <TextBox x:Name="ResultTextBox" IsReadOnly="True"
+                     materialDesign:HintAssist.Foreground="Gray">
+                <TextBox.Resources>
+                    <SolidColorBrush x:Key="MaterialDesignTextBoxBorder"  />
+                </TextBox.Resources>
+                <TextBox.Style>
+                    <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
+                        <Setter Property="Foreground" Value="LightGray" />
+                        <Style.Triggers>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="Text" Value="" />
+                                    <Condition Property="IsKeyboardFocused" Value="False" />
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Foreground" Value="White" />
+                            </MultiTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+
+            <TextBlock Text="URL:" 
+           HorizontalAlignment="Left"
+           VerticalAlignment="Center"
+           Style="{StaticResource MaterialDesignTitleLargeTextBlock}" 
+           Foreground="{DynamicResource ForegroundBrush}" 
+           Margin="0,10,0,00"/>
+
+            <TextBox x:Name="URLTextBox" IsReadOnly="True"
+         materialDesign:HintAssist.Foreground="Gray">
+                <TextBox.Resources>
+                   
+                    <SolidColorBrush x:Key="MaterialDesignTextBoxBorder"  />
+                </TextBox.Resources>
+                <TextBox.Style>
+                    <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
+                        <Setter Property="Foreground" Value="LightGray" />
+                        <Style.Triggers>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="Text" Value="" />
+                                    <Condition Property="IsKeyboardFocused" Value="False" />
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Foreground" Value="White" />
+                            </MultiTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+
+        </StackPanel>
+    </Grid>
+</Window>
